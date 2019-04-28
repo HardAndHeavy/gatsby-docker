@@ -5,7 +5,6 @@ Develop &amp; Build [GatsbyJS](https://www.gatsbyjs.org/) static sites within a 
 
 * Mac / Linux
 * Docker
-* Docker Compose
 
 ### Run
 
