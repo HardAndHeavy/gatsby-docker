@@ -1,11 +1,8 @@
-FROM alpine:3.9.2
+FROM node:latest
 
 EXPOSE 8000
 
-RUN apk update && apk upgrade
+RUN apt-get update && apt-get upgrade -y
 
-RUN apk add --no-cache git bash make
-
-RUN apk add --no-cache nodejs nodejs-npm
 RUN npm config set unsafe-perm true
-RUN npm i -g gatsby-cli
+RUN npm i -g gatsby-cli@2.11.7
