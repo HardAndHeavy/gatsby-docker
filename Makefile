@@ -12,7 +12,7 @@ bash: prepare
 		-e HOME=$(HOME) \
 		-v $(GATSBY_DIR):$(HOME) \
 		-w $(HOME) \
-		-v $(HOME)/.gitconfig:/$(HOME)/.gitconfig \
+		-v $(HOME)/.gitconfig:$(HOME)/.gitconfig \
 		-v $(HOME)/.bash_history:$(HOME)/.bash_history \
 		-v $(HOME)/.bashrc:$(HOME)/.bashrc \
 		-v /etc/passwd:/etc/passwd \
