@@ -1,5 +1,6 @@
 USER = "$(shell id -u):$(shell id -g)"
-GATSBY_DIR = $(PWD)/projects
+DOTFILES_DIR = /projects/dotfiles
+GATSBY_DIR = /projects/gatsby-docker/projects
 
 build:
 	docker build . -t hardandheavy/gatsby-docker
@@ -7,18 +8,17 @@ build:
 push:
 	docker push hardandheavy/gatsby-docker
 
-bash: prepare
+dev: prepare
 	docker run -it --rm \
 		-e HOME=$(HOME) \
-		-v $(GATSBY_DIR):$(HOME) \
-		-w $(HOME) \
-		-v $(HOME)/.gitconfig:$(HOME)/.gitconfig \
-		-v $(HOME)/.bash_history:$(HOME)/.bash_history \
-		-v $(HOME)/.bashrc:$(HOME)/.bashrc \
+		-v $(HOME):$(HOME) \
+		-v $(DOTFILES_DIR):$(DOTFILES_DIR) \
+		-v $(GATSBY_DIR):/projects \
+		-w /projects \
 		-v /etc/passwd:/etc/passwd \
 		-p 8000:8000 \
 		--user=$(USER) \
-		hardandheavy/gatsby-docker bash
+		hardandheavy/gatsby-docker zsh
 
 prepare:
-	mkdir -p projects
+	mkdir -p $(GATSBY_DIR)
