@@ -1,6 +1,6 @@
 USER = "$(shell id -u):$(shell id -g)"
 DOTFILES_DIR = /projects/dotfiles
-GATSBY_DIR = /projects/gatsby-docker/projects
+GATSBY_DIR = /projects
 
 build:
 	docker build . -t hardandheavy/gatsby-docker
@@ -8,7 +8,7 @@ build:
 push:
 	docker push hardandheavy/gatsby-docker
 
-dev: prepare
+dev:
 	docker run -it --rm \
 		-e HOME=$(HOME) \
 		-v $(HOME):$(HOME) \
@@ -19,6 +19,3 @@ dev: prepare
 		-p 8000:8000 \
 		--user=$(USER) \
 		hardandheavy/gatsby-docker zsh
-
-prepare:
-	mkdir -p $(GATSBY_DIR)
