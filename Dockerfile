@@ -22,4 +22,4 @@ RUN apt update && apt upgrade -y && \
   strip /usr/local/bin/nvim
 
 RUN npm config set unsafe-perm true
-RUN npm i -g gatsby-cli@4.4.0
+RUN npm i -g gatsby-cli@4.10.2
