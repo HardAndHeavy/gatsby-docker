@@ -1,4 +1,4 @@
-USER = "$(shell id -u):$(shell id -g)"
+UID_GID = "$(shell id -u):$(shell id -g)"
 DOTFILES_DIR = /projects/dotfiles
 GATSBY_DIR = /projects
 
@@ -17,5 +17,7 @@ dev:
 		-w /projects \
 		-v /etc/passwd:/etc/passwd \
 		-p 8000:8000 \
-		--user=$(USER) \
+		--user=$(UID_GID) \
+		-e USER=$(USER) \
+		-e HOST=gatsby \
 		hardandheavy/gatsby-docker zsh
