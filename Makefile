@@ -23,4 +23,4 @@ bash:
 		--user=$(UID_GID) \
 		-e USER=$(USER) \
 		-e HOST=gatsby \
-		gatsby-docker:$(tag) zsh
+		hardandheavy/gatsby-docker:latest zsh
