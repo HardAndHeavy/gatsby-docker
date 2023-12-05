@@ -3,12 +3,15 @@ DOTFILES_DIR = /projects/dotfiles
 GATSBY_DIR = /projects
 
 build:
-	docker build . -t hardandheavy/gatsby-docker
+	docker build -t gatsby-docker:$(tag) .
 
-push:
-	docker push hardandheavy/gatsby-docker
+publish:
+	docker image tag gatsby-docker:$(tag) hardandheavy/gatsby-docker:$(tag)
+	docker push hardandheavy/gatsby-docker:$(tag)
+	docker image tag gatsby-docker:$(tag) hardandheavy/gatsby-docker:latest
+	docker push hardandheavy/gatsby-docker:latest
 
-dev:
+bash:
 	docker run -it --rm \
 		-e HOME=$(HOME) \
 		-v $(HOME):$(HOME) \
@@ -16,8 +19,8 @@ dev:
 		-v $(GATSBY_DIR):/projects \
 		-w /projects \
 		-v /etc/passwd:/etc/passwd \
-		-p 8000:8000 \
+		-p 80:8000 \
 		--user=$(UID_GID) \
 		-e USER=$(USER) \
 		-e HOST=gatsby \
-		hardandheavy/gatsby-docker zsh
+		gatsby-docker:$(tag) zsh
