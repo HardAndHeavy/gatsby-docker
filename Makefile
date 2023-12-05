@@ -19,7 +19,7 @@ bash:
 		-v $(GATSBY_DIR):/projects \
 		-w /projects \
 		-v /etc/passwd:/etc/passwd \
-		-p 80:8000 \
+		-p 8000:8000 \
 		--user=$(UID_GID) \
 		-e USER=$(USER) \
 		-e HOST=gatsby \
