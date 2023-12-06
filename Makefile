@@ -23,7 +23,7 @@ test:
 		--user=$(UID_GID) \
 		-e USER=$(USER) \
 		-e HOST=gatsby \
-		gatsby-docker:$(test) zsh
+		gatsby-docker:$(tag) zsh
 
 bash:
 	docker run -it --rm \
