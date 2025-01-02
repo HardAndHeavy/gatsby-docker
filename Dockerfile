@@ -1,8 +1,8 @@
-FROM node:20.10.0-bookworm
+FROM node:23.5.0
 
 EXPOSE 8000
 
-RUN sh -c "$(wget -O- https://github.com/deluan/zsh-in-docker/releases/download/v1.1.5/zsh-in-docker.sh)"
+RUN sh -c "$(wget -O- https://github.com/deluan/zsh-in-docker/releases/download/v1.2.1/zsh-in-docker.sh)"
 
 ARG APT_DEPS_ZSH="zsh zsh-syntax-highlighting"
 ARG APT_DEPS_NEOVIM="ninja-build gettext libtool libtool-bin autoconf automake cmake g++ pkg-config unzip git binutils"
@@ -21,4 +21,4 @@ RUN apt update && apt upgrade -y && \
   make CMAKE_INSTALL_PREFIX=/usr/local install && \
   strip /usr/local/bin/nvim
 
-RUN npm i -g gatsby-cli@5.12.4
+RUN npm i -g gatsby-cli@5.14.0
