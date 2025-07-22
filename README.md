@@ -23,8 +23,8 @@ gatsby develop --host=0.0.0.0
 
 Go to http://localhost:8000/
 
-### Publish
+### Build
 
 ```sh
-gatsby publish
+gatsby build
 ```
