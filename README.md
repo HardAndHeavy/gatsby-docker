@@ -18,6 +18,7 @@ make dev
 make bash
 gatsby new hello-world https://github.com/gatsbyjs/gatsby-starter-hello-world
 cd hello-world
+npm i
 gatsby develop --host=0.0.0.0
 ```
 
